@@ -1,0 +1,24 @@
+GET http://localhost:4000/api/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
+
+
+### 
+
+POST http://localhost:4000/api/user/register
+Content-Type: application/json
+
+{
+  "name": "wasgood",
+  "email": "kaankaan@gmail.com",
+  "password": "yea"
+}
+
+###
+
+POST http://localhost:4000/api/user/login
+Content-Type: application/json
+
+{
+  "email": "kaankaan@gmail.com",
+  "password": "yea"
+}
