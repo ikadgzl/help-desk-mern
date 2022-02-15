@@ -36,8 +36,10 @@ const Register = () => {
   };
 
   useEffect(() => {
+    dispatch(reset());
+
     if (auth.error) {
-      toast.error(auth.error);
+      toast.error(auth.message);
     }
 
     if ((auth.success, auth.user)) {
@@ -47,9 +49,9 @@ const Register = () => {
         navigate('/');
       }, 2000);
     }
-
-    dispatch(reset());
   }, [auth, navigate, dispatch]);
+
+  console.log(auth);
 
   return (
     <>
