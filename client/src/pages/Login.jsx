@@ -1,5 +1,67 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { FaSignInAlt } from 'react-icons/fa';
+
 const Login = () => {
-  return <div>Login</div>;
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleCredentials = (e) => {
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!credentials.email || !credentials.password) {
+      toast.error('Provide all the credentials.');
+      return;
+    }
+  };
+
+  return (
+    <>
+      <section className='heading'>
+        <h1>
+          <FaSignInAlt /> Login
+        </h1>
+        <p>Login to get support.</p>
+      </section>
+
+      <section className='form'>
+        <form className='form-group' onSubmit={handleSubmit}>
+          <input
+            required
+            className='form-control'
+            type='email'
+            name='email'
+            placeholder='Enter your email...'
+            value={credentials.email}
+            onChange={handleCredentials}
+          />
+
+          <input
+            required
+            className='form-control'
+            type='password'
+            name='password'
+            placeholder='Enter your password...'
+            value={credentials.password}
+            onChange={handleCredentials}
+          />
+
+          <button className='btn btn-block' type='submit'>
+            Submit
+          </button>
+        </form>
+      </section>
+    </>
+  );
 };
 
 export default Login;
