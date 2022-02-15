@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaSignInAlt } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/auth/authSlice';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   });
+
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleCredentials = (e) => {
     setCredentials((prevCredentials) => ({
@@ -22,6 +27,8 @@ const Login = () => {
       toast.error('Provide all the credentials.');
       return;
     }
+
+    dispatch(login(credentials));
   };
 
   return (

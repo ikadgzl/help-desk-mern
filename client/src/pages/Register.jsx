@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../redux/auth/authSlice';
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -9,6 +11,9 @@ const Register = () => {
     password: '',
     confirmPassword: ''
   });
+
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleCredentials = (e) => {
     setCredentials((prevCredentials) => ({
@@ -24,6 +29,8 @@ const Register = () => {
       toast.error('Passwords do not match!');
       return;
     }
+
+    dispatch(register(credentials));
   };
 
   return (
