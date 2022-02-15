@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../redux/auth/authSlice';
+import { register, reset } from '../redux/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -14,6 +15,7 @@ const Register = () => {
 
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCredentials = (e) => {
     setCredentials((prevCredentials) => ({
@@ -32,6 +34,22 @@ const Register = () => {
 
     dispatch(register(credentials));
   };
+
+  useEffect(() => {
+    if (auth.error) {
+      toast.error(auth.error);
+    }
+
+    if ((auth.success, auth.user)) {
+      toast.success('Successfully signed in, redirecting in two seconds..');
+
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    }
+
+    dispatch(reset());
+  }, [auth, navigate, dispatch]);
 
   return (
     <>
