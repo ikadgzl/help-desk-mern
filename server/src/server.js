@@ -3,12 +3,18 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { userRouter } from './routes/userRoute.js';
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: 'http://localhost:3000'
+  })
+);
 
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
 app.use(errorHandler);
 
