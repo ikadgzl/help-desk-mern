@@ -37,7 +37,7 @@ const Header = () => {
 
               <li>
                 <Link to='/register'>
-                  <FaSignOutAlt /> Register
+                  <FaUser /> Register
                 </Link>
               </li>
             </>
