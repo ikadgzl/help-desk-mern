@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { userRouter } from './routes/userRoute.js';
+import { ticketRouter } from './routes/ticketRoute.js';
 import cors from 'cors';
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(
   })
 );
 
+app.use('/api/tickets', ticketRouter);
 app.use('/api/users', userRouter);
 
 app.use(errorHandler);

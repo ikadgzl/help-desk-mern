@@ -4,6 +4,10 @@ export default class ApiError {
     this.message = message;
   }
 
+  static NOT_FOUND(message) {
+    return new ApiError(404, message);
+  }
+
   static UNAUTHORIZED(message) {
     return new ApiError(401, message);
   }

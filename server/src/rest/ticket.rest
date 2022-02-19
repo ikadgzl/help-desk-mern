@@ -1,0 +1,34 @@
+GET http://localhost:4000/api/tickets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
+
+###
+
+GET http://localhost:4000/api/tickets/62117877db894ffc620a5345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
+
+###
+
+POST http://localhost:4000/api/tickets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
+Content-Type: application/json
+
+{
+  "product": "iPad",
+  "description": "this is a tablet computer made by apple"
+}
+
+###
+
+PUT http://localhost:4000/api/tickets/62117877db894ffc620a5345
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
+Content-Type: application/json
+
+{
+  "product": "iPad",
+  "description": "UPDATED v2: this is an apple macbook pro, you can develop ios apps with it"
+}
+
+###
+
+DELETE http://localhost:4000/api/tickets/621177f633534ef1cea9ce5e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGFhN2FkZWVmNTllZmIwOGM1YWQ3OSIsImlhdCI6MTY0NDg2NjkwMywiZXhwIjoxNjQ3NDU4OTAzfQ.Zwr9oP5rXNHbC3wGXwqluFIq5xvvGwlKMAleExTBt0I
