@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, reset } from '../redux/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 
 const Login = () => {
@@ -14,7 +13,6 @@ const Login = () => {
 
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleCredentials = (e) => {
     setCredentials((prevCredentials) => ({
@@ -28,6 +26,7 @@ const Login = () => {
 
     if (!credentials.email || !credentials.password) {
       toast.error('Provide all the credentials.');
+
       return;
     }
 
@@ -35,20 +34,16 @@ const Login = () => {
   };
 
   useEffect(() => {
-    dispatch(reset());
-
     if (auth.error) {
       toast.error(auth.message);
     }
 
     if ((auth.success, auth.user)) {
-      toast.success('Successfully signed in, redirecting in two seconds..');
-
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
+      toast.success('Successfully signed in, redirecting..');
     }
-  }, [auth, navigate, dispatch]);
+
+    dispatch(reset());
+  }, [auth, dispatch]);
 
   if (auth.isLoading) {
     return <Spinner />;

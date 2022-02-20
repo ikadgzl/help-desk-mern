@@ -14,10 +14,10 @@ const login = async (userData) => {
   const response = await axios.post('/api/users/login', userData);
 
   if (response) {
-    localStorage.setItem('user', JSON.stringify(response.user));
+    localStorage.setItem('user', JSON.stringify(response.data.user));
   }
 
-  return response;
+  return response.data.user;
 };
 
 const logout = () => {
