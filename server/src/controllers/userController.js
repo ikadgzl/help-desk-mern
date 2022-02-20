@@ -45,8 +45,6 @@ export const login = async (req, res, next) => {
 
   const existingUser = await User.findOne({ email });
 
-  console.log(email, password, existingUser);
-
   if (existingUser && (await bcrypt.compare(password, existingUser.password))) {
     res.status(201).json({
       message: 'Successfully logged in.',

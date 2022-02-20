@@ -16,6 +16,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import NewTicket from './pages/NewTicket';
 import Register from './pages/Register';
+import Ticket from './pages/Ticket';
+import SingleTicket from './pages/SingleTicket';
 
 function App() {
   const { isLoggedIn, authStatus } = useAuth();
@@ -31,6 +33,8 @@ function App() {
             <Route path='/' element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
               <Route index element={<Home />} />
               <Route path='/new-ticket' element={<NewTicket />} />
+              <Route path='/tickets' element={<Ticket />} />
+              <Route path='/tickets/:id' element={<SingleTicket />} />
             </Route>
 
             <Route

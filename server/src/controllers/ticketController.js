@@ -46,7 +46,7 @@ export const getTicketById = async (req, res, next) => {
   });
 };
 
-export const createTicket = async (req, res) => {
+export const createTicket = async (req, res, next) => {
   const { product, description } = req.body;
 
   if (!product || !description) {
@@ -75,7 +75,7 @@ export const createTicket = async (req, res) => {
   });
 };
 
-export const updateTicket = async (req, res) => {
+export const updateTicket = async (req, res, next) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {
@@ -103,7 +103,7 @@ export const updateTicket = async (req, res) => {
   });
 };
 
-export const deleteTicket = async (req, res) => {
+export const deleteTicket = async (req, res, next) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {

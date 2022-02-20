@@ -1,8 +1,15 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { createTicket, reset } from '../redux/ticket/ticketSlice';
 
 const NewTicket = () => {
   const { user } = useSelector((state) => state.auth);
+  const ticketStore = useSelector((state) => state.ticket);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [info, setInfo] = useState({
     name: user.name,
@@ -18,8 +25,34 @@ const NewTicket = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(info);
+    dispatch(
+      createTicket({ product: info.product, description: info.description })
+    );
   };
+
+  useEffect(() => {
+    if (ticketStore.error) {
+      toast.error(ticketStore.message);
+    }
+
+    if (ticketStore.success) {
+      toast.success('Ticket created!');
+
+      setTimeout(() => {
+        navigate('/tickets');
+      }, 2000);
+    }
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [
+    ticketStore.error,
+    ticketStore.message,
+    ticketStore.success,
+    dispatch,
+    navigate
+  ]);
 
   return (
     <>

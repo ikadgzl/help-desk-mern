@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, reset } from '../redux/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 
 const Register = () => {
@@ -16,7 +15,6 @@ const Register = () => {
 
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleCredentials = (e) => {
     setCredentials((prevCredentials) => ({
@@ -45,12 +43,8 @@ const Register = () => {
 
     if ((auth.success, auth.user)) {
       toast.success('Successfully signed in, redirecting in two seconds..');
-
-      setTimeout(() => {
-        navigate('/');
-      }, 2000);
     }
-  }, [auth, navigate, dispatch]);
+  }, [auth, dispatch]);
 
   if (auth.isLoading) {
     return <Spinner />;
